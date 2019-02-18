@@ -12,6 +12,7 @@ import { AboutPageModule } from '../about/about.module';
 import { HomePageModule } from '../home/home.module';
 import {AttendanceModule} from '../attendance/attendance.module';
 import {CoreModule} from '../core/core.module';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import {CoreModule} from '../core/core.module';
       FormsModule,
       AttendanceModule,
       CoreModule,
+      AuthModule,
       TabsPageRoutingModule,
       HomePageModule,
       AboutPageModule,

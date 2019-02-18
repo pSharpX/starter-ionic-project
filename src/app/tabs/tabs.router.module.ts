@@ -5,6 +5,7 @@ import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { ContactPage } from '../contact/contact.page';
+import { AuthRouteGuard } from '../auth/auth-route.guard';
 
 const routes: Routes = [
   {
@@ -24,12 +25,14 @@ const routes: Routes = [
       {
         path: 'about',
         outlet: 'about',
-        component: AboutPage
+        component: AboutPage,
+        canActivate: [AuthRouteGuard]
       },
       {
         path: 'contact',
         outlet: 'contact',
-        component: ContactPage
+        component: ContactPage,
+        canActivate: [AuthRouteGuard]
       }
     ]
   },
