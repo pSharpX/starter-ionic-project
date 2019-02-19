@@ -8,7 +8,7 @@
   <amplify-authenticator framework="ionic"></amplify-authenticator>
 </ion-content>
 
-<ion-footer no-border *ngIf="this.authState.signedIn">
+<ion-footer no-border *ngIf="this.authState.loggedIn">
   <ion-toolbar color="secondary" text-center>
     <ion-button fill="outline" color="light" (click)="showDecks()">
       My Decks

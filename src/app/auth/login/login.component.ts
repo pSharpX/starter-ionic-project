@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
-import { Events } from '@ionic/angular';
+import { Events, NavController } from '@ionic/angular';
 import { AmplifyService } from 'aws-amplify-angular';
 import { Router } from '@angular/router';
 
@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterContentInit {
   authState: any;
 
   constructor(
     public events: Events,
     public amplifyService: AmplifyService,
-    public router: Router
+    public router: Router,
+    public navCtrl: NavController
   ) {
     this.authState = { loggedIn: false };
 
@@ -26,7 +27,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  ngAfterContentInit(): void {
+    this.events.publish('data:AuthState', this.authState);
+  }
+
   showDecks() {
-    this.router.navigate(['/home']);
+    // this.router.navigateByUrl('/tabs/(home:home)');
+    this.navCtrl.navigateForward('/tabs/(home:home)');
   }
 }
