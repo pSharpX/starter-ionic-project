@@ -20,7 +20,8 @@ const routes: Routes = [
       {
         path: 'home',
         outlet: 'home',
-        component: HomePage
+        component: HomePage,
+        canActivate: [AuthRouteGuard]
       },
       {
         path: 'about',

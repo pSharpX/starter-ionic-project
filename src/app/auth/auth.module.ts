@@ -1,12 +1,46 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AmplifyAngularModule, AmplifyIonicModule, AmplifyService } from 'aws-amplify-angular';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { AuthRouteGuard } from './auth-route.guard';
+import { LoginComponent } from './login/login.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+    // children: [
+    //   {
+    //     path: '',
+    //     redirectTo: '/tabs/(home:home)',
+    //     pathMatch: 'full',
+    //   },
+    //   {
+    //     path: 'home',
+    //     outlet: 'home',
+    //     component: HomePage
+    //   }
+    // ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  }
+];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    RouterModule.forChild(routes),
+    AmplifyAngularModule,
+    AmplifyIonicModule
   ],
-  declarations: [],
+  declarations: [LoginComponent],
   providers: [AuthRouteGuard]
 })
 export class AuthModule { }
