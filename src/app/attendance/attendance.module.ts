@@ -19,7 +19,7 @@ import { AttendanceRegistrationComponent } from './attendance-registration/atten
         AttendanceRegistrationComponent
     ],
     providers: [
-        { provide: AttendanceGenericService, useClass: MockAttendanceService },
+        { provide: AttendanceGenericService, useClass: AttendanceService },
     ],
     declarations: [
         AttendanceListComponent,

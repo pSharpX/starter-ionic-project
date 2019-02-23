@@ -122,13 +122,12 @@ export class HttpGenericService<T> implements HttpGeneric<T> {
     }
 
     private handleResponse(res: Response): ResponseModel {
-        // return <ResponseModel>res;
         return {
             code: 200,
             success: true,
             error: {},
             message: 'success',
-            data: {},
+            data: (<any>res).data,
             paging: {},
         };
     }
