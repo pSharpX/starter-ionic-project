@@ -12,18 +12,6 @@ const routes: Routes = [
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-    // children: [
-    //   {
-    //     path: '',
-    //     redirectTo: '/tabs/(home:home)',
-    //     pathMatch: 'full',
-    //   },
-    //   {
-    //     path: 'home',
-    //     outlet: 'home',
-    //     component: HomePage
-    //   }
-    // ]
   },
   {
     path: 'login',
