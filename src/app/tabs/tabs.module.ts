@@ -13,12 +13,14 @@ import { HomePageModule } from '../home/home.module';
 import {AttendanceModule} from '../attendance/attendance.module';
 import {CoreModule} from '../core/core.module';
 import { AuthModule } from '../auth/auth.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
       IonicModule,
       CommonModule,
       FormsModule,
+      SharedModule,
       AttendanceModule,
       CoreModule,
       AuthModule,
