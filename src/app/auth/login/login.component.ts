@@ -40,11 +40,7 @@ export class LoginComponent implements OnInit, AfterContentInit {
     this.events.publish('data:AuthState', this.authState);
   }
 
-  signUp() {
-    this.auth
-      .signIn(this.username, this.password)
-      .then(user => {})
-      .catch(err => console.log(err));
+  clean() {
   }
 
   signIn() {

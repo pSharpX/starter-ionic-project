@@ -20,6 +20,7 @@ export class AttendanceRegistrationComponent implements OnInit {
       employeeId: 3,
       action: 'entrada',
       date: moment(date).format('YYYY/MM/DD HH:mm:ss'),
+      // date: moment(date).tz('America/Lima').format('YYYY-MM-DD HH:mm:ss'),
       time:  moment(date).format('HH:mm:ss')
     };
     console.log(attendance);
