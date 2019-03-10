@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 
+import { AmplifyAngularModule, AmplifyIonicModule, AmplifyService } from 'aws-amplify-angular';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,6 +20,8 @@ import {CoreModule} from './core/core.module';
       CoreModule,
       IonicModule.forRoot(),
       AppRoutingModule,
+      AmplifyAngularModule,
+    AmplifyIonicModule
   ],
   providers: [
     StatusBar,

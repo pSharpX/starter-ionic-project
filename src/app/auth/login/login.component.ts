@@ -25,8 +25,12 @@ export class LoginComponent implements OnInit, AfterContentInit {
     this.auth = this.amplifyService.auth();
 
     this.amplifyService.authStateChange$.subscribe(authState => {
+      console.log(authState);
       this.authState.loggedIn = authState.state === 'signedIn';
       this.events.publish('data:AuthState', this.authState);
+      if (this.authState.loggedIn) {
+        this.navCtrl.navigateForward('/tabs/(home:home)');
+      }
     });
   }
 
@@ -36,16 +40,17 @@ export class LoginComponent implements OnInit, AfterContentInit {
     this.events.publish('data:AuthState', this.authState);
   }
 
-  showDecks() {
-    // this.router.navigateByUrl('/tabs/(home:home)');
-    this.navCtrl.navigateForward('/tabs/(home:home)');
-  }
-
   signUp() {
-    this.auth.signIn(this.username, this.password)
-      .then(user => console.log(user))
+    this.auth
+      .signIn(this.username, this.password)
+      .then(user => {})
       .catch(err => console.log(err));
   }
 
-  signIn() {}
+  signIn() {
+    this.auth
+      .signIn(this.username, this.password)
+      .then(user => {})
+      .catch(err => console.log(err));
+  }
 }

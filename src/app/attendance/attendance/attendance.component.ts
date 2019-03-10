@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AttendanceModel} from '../../core/model/attendance-model';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-attendance-item',

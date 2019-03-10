@@ -15,12 +15,14 @@ export class AttendanceRegistrationComponent implements OnInit {
 
   createAttendance() {
     const date = new Date();
+    console.log(date);
     const attendance: AttendanceModel = {
       employeeId: 3,
       action: 'entrada',
-      date,
+      date: moment(date).format('YYYY/MM/DD HH:mm:ss'),
       time:  moment(date).format('HH:mm:ss')
     };
+    console.log(attendance);
     this.attendanceService.create(attendance).subscribe((newAttendance) => {
       console.log(newAttendance);
     });
