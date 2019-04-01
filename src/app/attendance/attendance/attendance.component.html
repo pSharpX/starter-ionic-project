@@ -1,7 +1,9 @@
 <ion-item-sliding>
-    <ion-item>
+    <ion-item lines="full" detail>
         <ion-icon name="time" item-start></ion-icon>
-        <h5>{{attendance.action}} - <span>{{attendance.date | dateMoment}}</span> </h5>
+        <ion-label>
+            {{attendance.action}} - <span>{{attendance.date | dateMoment}}</span>
+        </ion-label>
     </ion-item>
     <ion-item-options>
         <ion-button clear color="danger">
