@@ -6,7 +6,7 @@ import * as moment from 'moment';
 })
 export class DateMomentPipe implements PipeTransform {
 
-  transform(date: string, args?: any): any {
+  transform(date: string | Date, args?: any): any {
     return moment(date).fromNow();
   }
 

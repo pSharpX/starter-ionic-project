@@ -118,7 +118,7 @@ export class HttpGenericService<T> implements HttpGeneric<T> {
     }
 
     private resourceURI(url: any) {
-        return `${environment.apiUrl}/${url}`;
+        return `${environment.apiUrl}/${environment.appAwsApiGatewayState}/${url}`; //
     }
 
     private handleResponse(res: Response): ResponseModel {
