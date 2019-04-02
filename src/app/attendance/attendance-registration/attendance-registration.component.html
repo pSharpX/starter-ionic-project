@@ -1,5 +1,8 @@
 <div justify-content-between padding>
-    <ion-button color="primary" fill="outline" (click)="createAttendance()">
-        Marcar Asistencia
+    <ion-button color="primary" (click)="createAttendance()">
+        <ion-icon name="add"></ion-icon> Marcar
+    </ion-button>
+    <ion-button color="danger" (click)="undoAttendance()">
+        <ion-icon name="undo"></ion-icon>
     </ion-button>
 </div>

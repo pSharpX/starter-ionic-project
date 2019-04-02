@@ -1,7 +1,7 @@
 <ion-list lines>
   <div justify-content-between padding>
     <ion-button color="primary" fill="outline" (click)="fetchAttendances()">
-      <ion-icon name="sync"></ion-icon> Refrescar
+      <ion-icon name="sync"></ion-icon>
     </ion-button>
   </div>
   <app-attendance-item *ngFor="let attendance of attendances" [attendance]="attendance"></app-attendance-item>

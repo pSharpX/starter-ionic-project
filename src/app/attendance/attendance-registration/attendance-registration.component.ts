@@ -1,21 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AttendanceGenericService } from '../attendance-generic-service';
 import { AttendanceModel } from '../../core/model/attendance-model';
 import * as moment from 'moment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-attendance-registration',
   templateUrl: './attendance-registration.component.html',
   styleUrls: ['./attendance-registration.component.scss']
 })
-export class AttendanceRegistrationComponent implements OnInit {
+export class AttendanceRegistrationComponent implements OnInit, OnDestroy {
+  public createAttendanceSubs: Subscription;
+  public undoAttendanceSubs: Subscription;
   constructor(private attendanceService: AttendanceGenericService) {}
 
   ngOnInit() {}
+  ngOnDestroy(): void {
+    if (this.createAttendanceSubs) {
+      this.createAttendanceSubs.unsubscribe();
+    }
+    if (this.undoAttendanceSubs) {
+      this.undoAttendanceSubs.unsubscribe();
+    }
+  }
 
   createAttendance() {
     const date = new Date();
-    console.log(date);
     const attendance: AttendanceModel = {
       employeeId: 1,
       action: 'entrada',
@@ -27,5 +37,13 @@ export class AttendanceRegistrationComponent implements OnInit {
     this.attendanceService.create(attendance).subscribe(newAttendance => {
       console.log(newAttendance);
     });
+  }
+
+  undoAttendance() {
+    this.undoAttendanceSubs = this.attendanceService
+      .delete()
+      .subscribe(attendance => {
+        console.log(attendance);
+      });
   }
 }
