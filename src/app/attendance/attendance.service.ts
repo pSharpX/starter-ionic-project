@@ -36,6 +36,12 @@ export class AttendanceService implements AttendanceGenericService {
   }
 
   delete(id?: any): Observable<boolean> {
-    return undefined;
+    const $resource = `${this.$controllerName}/`;
+    return this.http.Delete($resource, id);
+  }
+
+  deleteLast(): Observable<boolean> {
+    const $resource = `${this.$controllerName}/undo`;
+    return this.http.Delete($resource);
   }
 }

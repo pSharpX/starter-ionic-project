@@ -41,7 +41,7 @@ export class AttendanceRegistrationComponent implements OnInit, OnDestroy {
 
   undoAttendance() {
     this.undoAttendanceSubs = this.attendanceService
-      .delete()
+      .deleteLast()
       .subscribe(attendance => {
         console.log(attendance);
       });

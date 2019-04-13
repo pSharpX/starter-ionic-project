@@ -72,4 +72,8 @@ export class MockAttendanceService implements AttendanceGenericService {
     delete(id?: any): Observable<boolean> {
         return null;
     }
+    deleteLast(): Observable<boolean> {
+        throw new Error('Method not implemented.');
+    }
 }
+

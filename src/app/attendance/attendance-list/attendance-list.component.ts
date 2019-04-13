@@ -12,7 +12,18 @@ import { Subscription } from 'rxjs';
 })
 export class AttendanceListComponent implements OnInit, OnDestroy {
   public attendances: Array<AttendanceModel> = [];
+  public fetching = false;
   public attendanceSubs: Subscription;
+
+  public onNext = (data: Array<AttendanceModel>) => {
+    this.attendances = data.sort((a, b) => {
+      return moment(a.date).isBefore(b.date) ? 1 : -1;
+    });
+  }
+  public onError = error => console.log(error);
+  public onComplete = () => {
+    this.fetching = false;
+  }
 
   constructor(private attendanceService: AttendanceGenericService) {}
 
@@ -27,13 +38,10 @@ export class AttendanceListComponent implements OnInit, OnDestroy {
   }
 
   fetchAttendances() {
+    this.fetching = true;
     this.attendanceSubs = this.attendanceService
       .getAll()
       .pipe(tap(console.log))
-      .subscribe((data: Array<AttendanceModel>) => {
-        this.attendances = data.sort((a, b) => {
-          return moment(a.date).isBefore(b.date) ? 1 : -1;
-        });
-      });
+      .subscribe(this.onNext, this.onError, this.onComplete);
   }
 }
