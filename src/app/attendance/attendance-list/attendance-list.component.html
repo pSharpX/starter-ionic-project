@@ -1,6 +1,6 @@
 <ion-list lines>
   <div justify-content-between padding>
-    <ion-button color="primary" fill="outline" (click)="fetchAttendances()">
+    <ion-button color="primary" [disabled]="fetching" fill="outline" (click)="fetchAttendances()">
       <div *ngIf="fetching; else elseBlock">
         <ion-spinner></ion-spinner>
       </div>
